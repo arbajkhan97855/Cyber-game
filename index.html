@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyber Arena</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loadingScreen">
+    <h1>CYBER ARENA</h1>
+    <div class="loader"></div>
+  </div>
+
+  <!-- Home Screen -->
+  <div id="homeScreen" class="glass">
+    <h1>CYBER ARENA</h1>
+    <p>Professional Neon Gaming Experience</p>
+
+    <button id="startBtn">START GAME</button>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div class="scoreBox">Score: <span id="score">0</span></div>
+    <div class="scoreBox">High Score: <span id="highScore">0</span></div>
+
+    <div class="healthBar">
+      <div id="health"></div>
+    </div>
+
+    <button id="pauseBtn">Pause</button>
+    <button id="soundBtn">Sound ON</button>
+  </div>
+
+  <!-- Canvas -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Mobile Controls -->
+  <div id="mobileControls">
+    <button id="leftBtn">◀</button>
+    <button id="rightBtn">▶</button>
+    <button id="shootBtn">🔥</button>
+  </div>
+
+  <!-- Game Over -->
+  <div id="gameOver" class="glass hidden">
+    <h1>GAME OVER</h1>
+    <p>Your Score: <span id="finalScore"></span></p>
+    <button id="restartBtn">RESTART</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
