@@ -1,57 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cyber Arena</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cyber Arena</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div id="loadingScreen">
-    <h1>CYBER ARENA</h1>
-    <div class="loader"></div>
+<div class="grid-bg"></div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">CYBER ARENA</div>
+    <div class="logo-sub">Professional Neon Gaming Experience</div>
   </div>
 
-  <!-- Home Screen -->
-  <div id="homeScreen" class="glass">
-    <h1>CYBER ARENA</h1>
-    <p>Professional Neon Gaming Experience</p>
-
-    <button id="startBtn">START GAME</button>
+  <!-- SCOREBOARD -->
+  <div class="scoreboard">
+    <div class="score-box">
+      <div class="score-label">SCORE</div>
+      <div class="score-val" id="scoreDisplay">0</div>
+    </div>
+    <div class="score-box hi">
+      <div class="score-label">HIGH SCORE</div>
+      <div class="score-val" id="hiDisplay">0</div>
+    </div>
   </div>
 
-  <!-- HUD -->
-  <div id="hud">
-    <div class="scoreBox">Score: <span id="score">0</span></div>
-    <div class="scoreBox">High Score: <span id="highScore">0</span></div>
+  <!-- CONTROL BAR -->
+  <div class="ctrl-bar">
+    <button class="ctrl-btn" id="pauseBtn" onclick="togglePause()">⏸ PAUSE</button>
+    <button class="ctrl-btn" id="soundBtn" onclick="toggleSound()">🔊 SOUND ON</button>
+    <button class="ctrl-btn" onclick="location.reload()">↺ RESET</button>
+  </div>
 
-    <div class="healthBar">
-      <div id="health"></div>
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <span class="health-label">HP</span>
+    <div class="health-bar">
+      <div class="health-fill" id="healthFill"></div>
+    </div>
+    <span class="level-badge" id="levelBadge">LV 01</span>
+  </div>
+
+  <!-- GAME CANVAS -->
+  <div class="canvas-wrap" id="canvasWrap">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- START OVERLAY -->
+    <div class="overlay" id="startOverlay">
+      <div class="overlay-title">CYBER ARENA</div>
+      <div class="overlay-score">TAP TO BEGIN</div>
+      <button class="btn btn-primary" onclick="startGame()">▶ START GAME</button>
     </div>
 
-    <button id="pauseBtn">Pause</button>
-    <button id="soundBtn">Sound ON</button>
+    <!-- GAME OVER OVERLAY -->
+    <div class="overlay hidden" id="overOverlay">
+      <div class="overlay-title" style="color:var(--neon-pink);text-shadow:0 0 20px var(--neon-pink)">GAME OVER</div>
+      <div class="overlay-score" id="finalScore">YOUR SCORE: 0</div>
+      <button class="btn btn-danger" onclick="restartGame()">↺ RESTART</button>
+    </div>
   </div>
 
-  <!-- Canvas -->
-  <canvas id="gameCanvas"></canvas>
+  <!-- BOTTOM CONTROLS: D-PAD + FIRE -->
+  <div class="bottom-controls">
+    <!-- D-PAD -->
+    <div class="dpad">
+      <button class="dpad-btn dpad-up"    id="dUp"
+        ontouchstart="pressKey('ArrowUp',true)"    ontouchend="pressKey('ArrowUp',false)">▲</button>
+      <button class="dpad-btn dpad-down"  id="dDown"
+        ontouchstart="pressKey('ArrowDown',true)"  ontouchend="pressKey('ArrowDown',false)">▼</button>
+      <button class="dpad-btn dpad-left"  id="dLeft"
+        ontouchstart="pressKey('ArrowLeft',true)"  ontouchend="pressKey('ArrowLeft',false)">◀</button>
+      <button class="dpad-btn dpad-right" id="dRight"
+        ontouchstart="pressKey('ArrowRight',true)" ontouchend="pressKey('ArrowRight',false)">▶</button>
+      <div class="dpad-center"></div>
+    </div>
 
-  <!-- Mobile Controls -->
-  <div id="mobileControls">
-    <button id="leftBtn">◀</button>
-    <button id="rightBtn">▶</button>
-    <button id="shootBtn">🔥</button>
+    <!-- FIRE BUTTON -->
+    <div class="fire-row">
+      <button class="fire-btn"
+        ontouchstart="pressKey('Space',true)"  ontouchend="pressKey('Space',false)"
+        onmousedown="pressKey('Space',true)"   onmouseup="pressKey('Space',false)">🔥</button>
+    </div>
   </div>
 
-  <!-- Game Over -->
-  <div id="gameOver" class="glass hidden">
-    <h1>GAME OVER</h1>
-    <p>Your Score: <span id="finalScore"></span></p>
-    <button id="restartBtn">RESTART</button>
-  </div>
+</div><!-- /page -->
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
